@@ -92,8 +92,7 @@ async function onLoadMore() {
     try {
         const data = await searchImg(query, page);
         
-
-         if (data.hits.length === 0 || page * data.hits.length >= data.totalHits) {
+        if ( 15 * data.hits.length >= data.totalHits) {
            hideBtnLoadMore();
             noMoreImg();
         }
@@ -107,6 +106,7 @@ async function onLoadMore() {
 }
     catch (error) {
         noMoreImg();
+        hideBtnLoadMore();
     }
     finally {
         hideLoader();
